@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+  <robot name="fingertest" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find fingertest)/urdf/fingertest.gazebo"/>
+  <xacro:macro name="fingertest" params="parent side *origin">
+  <link
+    name="${side}_base_link">
+    <inertial>
+      <origin
+        xyz="-0.01 0.00 0.04"
+        rpy="0 0 0" />
+      <mass
+        value="0.0027" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.01"
+        iyz="0"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fingertest/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+         <geometry>
+               <mesh
+          filename="package://fingertest/meshes/base_link.STL" />
+            </geometry>
+        
+    </collision>
+  </link>
+  <link
+    name="${side}_Link_1">
+    <inertial>
+      <origin
+        xyz="0 -0.01 0.02"
+        rpy="0 0 0" />
+      <mass
+        value="0.002" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.01"
+        iyz="0"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fingertest/meshes/Link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision name="${side}_Link1_bumper">
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry name="${side}_Link1_bumper">
+        <mesh
+          filename="package://fingertest/meshes/Link_1.STL" />
+      </geometry>
+      
+    </collision>
+
+  </link>
+
+  
+  <!-- <link name="world"/> -->
+  <joint name="${side}_fixed456" type="fixed">
+    <xacro:insert_block name="origin" />
+    <parent
+      link="${parent}" />
+    <child
+      link="${side}_base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+ 
+  
+  <joint
+    name="${side}_Joint1"
+    type="continuous">
+    <origin
+      xyz="-0.0165 0 0.0301"
+      rpy="0 -0.5235 0" />
+    <parent
+      link="${side}_base_link" />
+    <child
+      link="${side}_Link_1" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="${side}_Link_2">
+    <inertial>
+      <origin
+        xyz="0 -0.01 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.00197" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.01"
+        iyz="0"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fingertest/meshes/Link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision name="${side}_Link2_bumper">
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry name="${side}_Link2_bumper">
+        <mesh
+          filename="package://fingertest/meshes/Link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${side}_Joint2"
+    type="continuous">
+    <origin
+      xyz="0 0 0.05715"
+      rpy="0 0 0" />
+    <parent
+      link="${side}_Link_1" />
+    <child
+      link="${side}_Link_2" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="${side}_Link_3">
+    <inertial>
+      <origin
+        xyz="-0.02 0.01 0.00"
+        rpy="0 0 0" />
+      <mass
+        value="0.0137" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.01"
+        iyz="0"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fingertest/meshes/Link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision name="${side}_Link3_bumper">
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry name="${side}_Link3_bumper">
+        <mesh
+          filename="package://fingertest/meshes/Link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${side}_Joint3"
+    type="continuous">
+    <origin
+      xyz="0 0 0.0381"
+      rpy="0 0.5235 0" />
+    <parent
+      link="${side}_Link_2" />
+    <child
+      link="${side}_Link_3" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <transmission name="${side}_tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${side}_Joint1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${side}_motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+    <transmission name="${side}_tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${side}_Joint2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${side}_motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+    <transmission name="${side}_tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${side}_Joint3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${side}_motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <xacro:fingertest_gazebo side="${side}"/>
+
+  <gazebo reference="${side}_Link_1">
+   <sensor name="${side}_Link_1_sensor" type="contact">
+        <visualize>true</visualize>
+        <always_on>true</always_on>
+        <update_rate>50.0</update_rate>
+        <contact>
+            <collision>${side}_Link_1_fixed_joint_lump__${side}_Link1_bumper_collision</collision>
+            
+        </contact>
+        <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>${side}_Link1_bumper</bumperTopicName>
+                <frameName>world</frameName>
+            </plugin>
+    </sensor>
+
+   
+    <gravity>true</gravity>
+    </gazebo>
+
+    <gazebo reference="${side}_Link_2">
+   <sensor name="${side}_Link_2_sensor" type="contact">
+        <visualize>true</visualize>
+        <always_on>true</always_on>
+        <update_rate>50.0</update_rate>
+        <contact>
+            <collision>${side}_Link_2_fixed_joint_lump__${side}_Link2_bumper_collision</collision>
+            
+        </contact>
+        <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>${side}_Link2_bumper</bumperTopicName>
+                <frameName>world</frameName>
+            </plugin>
+    </sensor>
+
+    
+    <gravity>true</gravity>
+    </gazebo>
+
+
+  <gazebo reference="${side}_Link_3">
+   <sensor name="${side}_Link_3_sensor" type="contact">
+        <visualize>true</visualize>
+        <always_on>true</always_on>
+        <update_rate>50.0</update_rate>
+        <contact>
+            <collision>${side}_Link_3_fixed_joint_lump__${side}_Link3_bumper_collision</collision>
+            
+        </contact>
+        <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>${side}_Link3_bumper</bumperTopicName>
+                <frameName>world</frameName>
+            </plugin>
+    </sensor>
+
+   
+    <gravity>true</gravity>
+</gazebo>
+
+
+  <!-- <gazebo reference="bumper_finger">
+        <selfCollide>true</selfCollide>
+        <sensor name="bumper_finger_sensor" type="contact">
+            <contact>
+                <collision>bumper_finger_collision_collison</collision>
+            </contact>
+            <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>bumper_finger</bumperTopicName>
+                <frameName>world</frameName>
+            </plugin>
+        </sensor>
+    </gazebo> -->
+  </xacro:macro>
+</robot>

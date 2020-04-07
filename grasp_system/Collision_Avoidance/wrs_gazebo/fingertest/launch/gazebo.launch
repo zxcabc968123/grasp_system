@@ -1,0 +1,35 @@
+<!--<?xml=1.0?>-->
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+<!--
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+-->
+  <!--
+  args="-file $(find fingertest)/urdf/fingertest.urdf -urdf -model fingertest"
+  /-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find fingertest)/urdf/fingertest.xacro'"/>
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -model fingertest -param robot_description"
+    output="screen" />
+  <!--
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+  -->
+  <include file="$(find fingertest)/launch/finger_one_control.launch"/>
+</launch>

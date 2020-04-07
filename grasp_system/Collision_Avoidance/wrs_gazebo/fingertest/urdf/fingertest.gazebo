@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+ <!-- <robot name="fingertest">  -->
+<robot name="fingertest" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/fingertest</robotNamespace>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    <legacyModeNS>true</legacyModeNS>
+    </plugin>
+</gazebo> -->
+
+<!-- <gazebo>
+  <plugin name="finger_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+    <alwaysOn>true</alwaysOn>
+    <updateRate>10</updateRate>
+    <bumperTopicName>finger_bumper</bumperTopicName>
+    <frameName>world</frameName>
+  </plugin>
+</gazebo> -->
+
+
+<xacro:macro name="fingertest_gazebo" params="side">
+
+ <gazebo reference="${side}_base_link">
+ <material>Gazebo/White</material>
+ <mu1 value="1000"/>
+ <mu2 value="1000"/> 
+ <kp>100000</kp>
+ <kd>1.0</kd>
+ <selfCollide>true</selfCollide>
+ </gazebo>
+
+ <gazebo reference="${side}_Link_1">
+ <material>Gazebo/White</material>
+ <mu1 value="1000"/>
+ <mu2 value="1000"/> 
+ <kp>100000</kp>
+ <kd>1.0</kd>
+ <selfCollide>true</selfCollide>
+ 
+ </gazebo>
+
+ <gazebo reference="${side}_Link_2">
+ <material>Gazebo/White</material>
+ <mu1 value="1000"/>
+ <mu2 value="1000"/> 
+ <kp>100000</kp>
+ <kd>1.0</kd>
+ <selfCollide>true</selfCollide>
+ 
+ </gazebo>
+ 
+ <gazebo reference="${side}_Link_3">
+ <material>Gazebo/White</material>
+ <mu1 value="2000"/>
+ <mu2 value="1000"/> 
+ <kp>10000000.0</kp>
+ <kd>1.0</kd>
+ <selfCollide>true</selfCollide>
+ <!-- <sensor name="${side}_Link_3_sensor" type="contact">
+            <contact>
+                <collision>bumper_${side}_collision_collison</collision>
+            </contact>
+            <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>${side}_bumper_finger</bumperTopicName>
+                <frameName>3fgripper</frameName>
+            </plugin>
+        </sensor> -->
+ 
+ </gazebo>
+ <!-- <gazebo reference="bumper_finger">
+        <selfCollide>true</selfCollide>
+        <sensor name="bumper_finger_sensor" type="contact">
+            <contact>
+                <collision>bumper_finger_collision_collison</collision>
+            </contact>
+            <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <bumperTopicName>bumper_finger</bumperTopicName>
+                <frameName>world</frameName>
+            </plugin>
+        </sensor>
+
+    </gazebo> -->
+ </xacro:macro>
+</robot>

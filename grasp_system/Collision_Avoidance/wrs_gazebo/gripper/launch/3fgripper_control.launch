@@ -1,0 +1,29 @@
+<!--<?xml=1.0?>-->
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find gripper)/config/3fgripper_one.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/3fgripper" args="joint_state_controller
+                                           l_joint1_position_controller 
+                                           l_joint2_position_controller
+                                           l_joint3_position_controller
+					                       m_joint1_position_controller 
+                                           m_joint2_position_controller
+                                           m_joint3_position_controller
+                                           r_joint1_position_controller 
+                                           r_joint2_position_controller
+                                           r_joint3_position_controller
+                                           l_finger_joint_position_controller 
+                                           r_finger_joint_position_controller
+                                           
+                                                                        "/>
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/3fgripper/joint_states" />
+  </node>
+
+</launch>

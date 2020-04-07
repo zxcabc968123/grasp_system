@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <!-- <arg name="world_name" value="$(find gripper)/world/box_world.world"/> -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find gripper)/urdf/3fgripper.xacro'"/>
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -model 3fgripper -param robot_description"
+    output="screen" />
+
+<include file="$(find gripper)/launch/3fgripper_control.launch"/>
+
+</launch>
