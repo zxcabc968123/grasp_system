@@ -42,8 +42,8 @@
 
  <gazebo reference="${side}_Link_2">
  <material>Gazebo/White</material>
- <mu1 value="1000"/>
- <mu2 value="1000"/> 
+ <mu1 value="1000000000"/>
+ <mu2 value="1000000000"/> 
  <kp>100000</kp>
  <kd>1.0</kd>
  <selfCollide>true</selfCollide>
@@ -52,10 +52,12 @@
  
  <gazebo reference="${side}_Link_3">
  <material>Gazebo/White</material>
- <mu1 value="2000"/>
- <mu2 value="1000"/> 
- <kp>10000000.0</kp>
- <kd>1.0</kd>
+ <mu1 value="100"/>
+ <mu2 value="100"/> 
+ <kp>1</kp>
+ <kd>1</kd>
+ <minDepth>0.003</minDepth>  
+ <maxVel>0</maxVel> 
  <selfCollide>true</selfCollide>
  <!-- <sensor name="${side}_Link_3_sensor" type="contact">
             <contact>

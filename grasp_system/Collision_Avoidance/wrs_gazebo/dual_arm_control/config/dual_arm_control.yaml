@@ -103,7 +103,7 @@ mobile_dual_arm:
   l_joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: l_Joint3
-    pid: {p: 50.0, i: 0.01, d: 5.0}
+    pid: {p: 100, i: 0.01, d: 5.0}
 
 # finger middle ---------------------------------------
   m_joint1_position_controller:
@@ -117,7 +117,7 @@ mobile_dual_arm:
   m_joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: m_Joint3
-    pid: {p: 50.0, i: 0.01, d: 5.0}
+    pid: {p: 100, i: 0.01, d: 5.0}
 
 # finger right ---------------------------------------
   r_joint1_position_controller:
@@ -131,4 +131,4 @@ mobile_dual_arm:
   r_joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: r_Joint3
-    pid: {p: 50.0, i: 0.01, d: 5.0}
+    pid: {p: 100, i: 0.01, d: 5.0}

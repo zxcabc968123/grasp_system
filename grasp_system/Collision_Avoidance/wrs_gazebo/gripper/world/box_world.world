@@ -31,7 +31,7 @@
             </contact>
             <friction>
               <ode>
-                <mu>100</mu>
+                <mu>50</mu>
                 <mu2>50</mu2>
               </ode>
               <torsional>
@@ -83,11 +83,11 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <model name='unit_box'>
-      <pose frame=''>0 0 0 0 -0 0</pose>
+    <!-- <model name='unit_box'>
+      <pose frame=''>0 0 0 0 0 0</pose>
       <link name='link'>
         <inertial>
-          <mass>1</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.1</ixx>
             <ixy>0</ixy>
@@ -96,7 +96,7 @@
             <iyz>0</iyz>
             <izz>0.1</izz>
           </inertia>
-          <pose frame=''>0 0 0 0 -0 0</pose>
+          <pose frame=''>0 0 0 0 0 0</pose>
         </inertial>
         <collision name='collision'>
           <geometry>
@@ -109,16 +109,16 @@
             <friction>
               <ode>
                 <mu>100</mu>
-                <mu2>50</mu2>
+                <mu2>100</mu2>
               </ode>
             </friction>
             <contact>
-              <elastic_modulus>0.000001</elastic_modulus>
+              <elastic_modulus>1</elastic_modulus>
               <ode>
-                  <kp>10000000.0</kp>
-                  <kd>10000000.0</kd>
+                  <kp>100</kp>
+                  <kd>1</kd>
                   <min_depth>0.001</min_depth>
-                  <max_vel>0.001</max_vel>
+                  <max_vel>0.01</max_vel>
                   </ode>
             </contact>
           </surface>
@@ -136,11 +136,11 @@
             </script>
           </material>
         </visual>
-        <self_collide>0</self_collide>
+        <self_collide>1</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-    </model>
+    </model> -->
 
     <model name='base_box'>
     <link name='link'>
@@ -154,7 +154,7 @@
           <iyz>0</iyz>
           <izz>0.166667</izz>
         </inertia>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 0</pose>
       </inertial>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -243,35 +243,35 @@
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
   </model>
-
- <model name='base_table'>
-    <link name='link_table'>
+      
+  <model name='unit_box_red'>
+    <link name='link'>
       <inertial>
-        <mass>1</mass>
+        <mass>0.1</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>0.01</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>0.01</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>0.01</izz>
         </inertia>
-        <pose frame=''>0 4 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <self_collide>0</self_collide>
+      <self_collide>1</self_collide>
       <enable_wind>0</enable_wind>
       <kinematic>0</kinematic>
-      <pose frame=''>-0 0 -0.315639 0 -0 0</pose>
+      <pose frame=''>0 0 0 0 -0 0</pose>
       <gravity>1</gravity>
       <visual name='visual'>
         <geometry>
           <box>
-            <size>0.55 0.55 0.50</size>
+            <size>0.05 0.05 0.05</size>
           </box>
         </geometry>
         <material>
           <script>
-            <name>Gazebo/White</name>
+            <name>Gazebo/Red</name>
             <uri>file://media/materials/scripts/gazebo.material</uri>
           </script>
           <!-- <shader type='pixel'>
@@ -286,20 +286,20 @@
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
-      <collision name='collision_table'>
+      <collision name='collision_red'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-             <size>0.55 0.55 0.50</size>
+            <size>0.05 0.05 0.05</size>
           </box>
         </geometry>
         <surface>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>1000000000000</mu>
+              <mu2>100</mu2>
               <fdir1>0 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
@@ -342,9 +342,222 @@
         </surface>
       </collision>
     </link>
-    <static>1</static>
+    <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
+    <pose frame=''>0.6 0 1 0 0 0</pose>
   </model>
+
+
+
+
+ <!-- <model name='base_table'>
+    <link name='link_table'>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.166667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.166667</iyy>
+          <iyz>0</iyz>
+          <izz>0.166667</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <geometry>
+          <box>
+            <size>0.55 0.55 0.3</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <collision name='collision_table'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <geometry>base_table
+          <box>
+             <size>0.55 0.55 0.3</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10000</mu>
+              <mu2>10000</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model> -->
+
+
+
+  <model name="table_1">
+      <link name="table_link_1">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose frame="">0 0 0 0 -0 0</pose>
+        </inertial>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <gravity>1</gravity>
+        <visual name="table_visual_1">
+          <geometry>
+            <box>
+              <size>0.55 0.55 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <!-- <shader type="pixel">
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive> -->
+          </material>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name="table_collision_1">
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame="">0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.55 0.55 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1000000000000</mu>
+                <mu2>1000000000000</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>100</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>1</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame="">0.6 0 0.15 0 0 0</pose>
+    </model>
+
+
 
 
     <state world_name='default'>
@@ -362,27 +575,27 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='unit_box'>
-        <pose frame=''>1 0 0 0 0 0</pose>
+      <!-- <model name='unit_box'>
+        <pose frame=''>0 0 0 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0.8 0 0.6 0 0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
+          <pose frame=''>0.6 0 1 0 0 0</pose>
+          <velocity>0 0 0 0 0 0</velocity>
           <acceleration>-0.001841 0.001833 -0.003672 -0.073273 -0.073611 -0</acceleration>
           <wrench>-9.2e-05 9.2e-05 -0.000184 0 -0 0</wrench>
         </link>
-      </model>
+      </model> -->
 
-      <model name='base_table'>
-        <pose frame=''>1 0 0 0 0 0</pose>
+      <!-- <model name='base_table'>
+        <pose frame=''>0 0 0 0 0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_table'>
-          <pose frame=''>0.8 0 0 0 0 0</pose>
+          <pose frame=''>0.75 0 0 0 0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>-0.001841 0.001833 -0.003672 -0.073273 -0.073611 -0</acceleration>
           <wrench>-9.2e-05 9.2e-05 -0.000184 0 -0 0</wrench>
         </link>
-      </model>
+      </model> -->
 
       <light name='sun'>
         <pose frame=''>0 0 10 0 -0 0</pose>
