@@ -2,7 +2,7 @@
 <robot name="3fgripper" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find fingertest)/urdf/fingertest.xacro"/>
     <xacro:include filename="$(find gripper_base)/urdf/gripper_base.xacro"/>
-    <!-- <xacro:include filename="$(find gripper)/urdf/3fgripper.gazebo"/> -->
+    <xacro:include filename="$(find gripper)/urdf/3fgripper.gazebo"/>
     <!-- <xacro:include filename="$(find slide_rail)/urdf/Slide_rail.xacro"/>
     <xacro:include filename="$(find single_arm_description)/urdf/single_arm.xacro"/> -->
     <!-- <link name="world"/> -->

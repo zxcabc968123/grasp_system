@@ -26,7 +26,7 @@
           </geometry>
           <surface>
             <contact>
-              <collide_bitmask>65535</collide_bitmask>
+              <collide_bitmask>1</collide_bitmask>
               <ode/>
             </contact>
             <friction>
@@ -145,7 +145,7 @@
     <model name='base_box'>
     <link name='link'>
       <inertial>
-        <mass>1</mass>
+        <mass>10</mass>
         <inertia>
           <ixx>0.166667</ixx>
           <ixy>0</ixy>
@@ -298,11 +298,14 @@
         <surface>
           <friction>
             <ode>
-              <mu>1000000000000</mu>
-              <mu2>100</mu2>
+              <mu>100000</mu>
+              <mu2>100000</mu2>
               <fdir1>0 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
+              <solver>
+              <friction_mpdel>box_model</friction_mpdel>
+              </solver>
             </ode>
             <torsional>
               <coefficient>1</coefficient>
@@ -322,22 +325,23 @@
             <collide_without_contact>0</collide_without_contact>
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
+            <elastic_modulus>0.001</elastic_modulus>
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>100000</kp>
               <kd>1</kd>
               <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <min_depth>0.01</min_depth>
             </ode>
-            <bullet>
+            <!-- <bullet>
               <split_impulse>1</split_impulse>
               <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
               <kp>1e+13</kp>
               <kd>1</kd>
-            </bullet>
+            </bullet> -->
           </contact>
         </surface>
       </collision>
@@ -457,7 +461,7 @@
   <model name="table_1">
       <link name="table_link_1">
         <inertial>
-          <mass>100</mass>
+          <mass>10</mass>
           <inertia>
             <ixx>0.166667</ixx>
             <ixy>0</ixy>
@@ -508,8 +512,8 @@
           <surface>
             <friction>
               <ode>
-                <mu>1000000000000</mu>
-                <mu2>1000000000000</mu2>
+                <mu>100</mu>
+                <mu2>100</mu2>
                 <fdir1>0 0 0</fdir1>
                 <slip1>0</slip1>
                 <slip2>0</slip2>
@@ -535,24 +539,24 @@
               <ode>
                 <soft_cfm>0</soft_cfm>
                 <soft_erp>0.2</soft_erp>
-                <kp>1e+13</kp>
+                <kp>1000000</kp>
                 <kd>1</kd>
                 <max_vel>0.01</max_vel>
                 <min_depth>0</min_depth>
               </ode>
-              <bullet>
+              <!-- <bullet>
                 <split_impulse>1</split_impulse>
                 <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
                 <soft_cfm>0</soft_cfm>
                 <soft_erp>0.2</soft_erp>
                 <kp>100</kp>
                 <kd>1</kd>
-              </bullet>
+              </bullet> -->
             </contact>
           </surface>
         </collision>
       </link>
-      <static>1</static>
+      <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
       <pose frame="">0.6 0 0.15 0 0 0</pose>
     </model>
